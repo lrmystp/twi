@@ -1,0 +1,19 @@
+@(date: String)(strs: ArrayList[String])
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+        <body>
+            @date
+
+            <ul>
+                @for(str <- strs) {
+                    <li>@str</li>
+                }
+            </ul>
+        </body>
+    </body>
+</html>
