@@ -1,0 +1,32 @@
+body > div.container {
+    margin-top: 65px;
+}
+
+#tweet-form > textarea {
+    width: 90%;
+    float: left;
+    resize: none;
+    vertical-align: middle;
+}
+
+#tweet-form > button {
+    vertical-align: middle;
+}
+
+#timeline {
+    padding: 10px;
+    clear: both;
+}
+
+.tweet > .author {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.tweet > .content {
+}
+
+.tweet > .date {
+    font-size: 0.9em;
+    opacity: 0.7;
+}

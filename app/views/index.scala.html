@@ -3,17 +3,60 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
         <title>test</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
     </head>
     <body>
         <body>
-            @date
-
-            <ul>
-                @for(str <- strs) {
-                    <li>@str</li>
-                }
-            </ul>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/">
+                        (^o^)
+                        </a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a>Home</a></li>
+                            <li><a>Mention</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="tweet-container">
+                    <form id="tweet-form">
+                        <textarea class="form-control" rows="3" placeholder="tweet"></textarea>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+                <div id="timeline">
+                    <div class="well tweet">
+                        <div class="author">
+                            kuwa
+                        </div>
+                        <div class="tweet-content">
+                            dame
+                        </div>
+                        <div class="date text-right">
+                            2015/12/28 23:45:56
+                        </div>
+                    </div>
+                    <div class="well tweet">
+                        <div class="author">
+                            kuwa
+                        </div>
+                        <div class="content">
+                            shinchoku
+                        </div>
+                        <div class="date text-right">
+                            2015/12/28 23:45:40
+                        </div>
+                    </div>
+                </div>
+            </div>
         </body>
     </body>
 </html>
