@@ -25,4 +25,8 @@ public class Application extends Controller {
         return ok(login.apply());
     }
 
+    public Result register() {
+        return ok(register.apply());
+    }
+
 }
