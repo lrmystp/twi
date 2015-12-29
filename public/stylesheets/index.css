@@ -2,15 +2,21 @@ body > div.container {
     margin-top: 65px;
 }
 
-#tweet-form > textarea {
-    width: 90%;
+#tweet-container {
+    margin: 10px;
+}
+
+#tweet-form {
+}
+
+#tweet-container textarea {
     float: left;
     resize: none;
     vertical-align: middle;
 }
 
-#tweet-form > button {
-    vertical-align: middle;
+#tweet-container button {
+    float: right;
 }
 
 #timeline {

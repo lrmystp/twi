@@ -12,24 +12,28 @@
         <body>
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">
-                        (^o^)
-                        </a>
-                    </div>
-                    <div id="navbar" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a>Home</a></li>
-                            <li><a>Mention</a></li>
+                    <div class="navbar-header pull-left">
+                        <div class="navbar-brand">
+                            <a href="/">(^o^)</a>
+                        </div>
+                        <ul class="nav navbar-nav pull-left">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Mention</a></li>
                         </ul>
                     </div>
+                    <div id="navbar-header">
+                        <ul class="nav navbar-nav pull-right">
+                            <li><a href="#">kuwa</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </nav>
             <div class="container">
-                <div class="tweet-container">
+                <div id="tweet-container">
                     <form id="tweet-form">
-                        <textarea class="form-control" rows="3" placeholder="tweet"></textarea>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                            <textarea class="form-control" rows="1" placeholder="tweet"></textarea>
+                            <button type="submit" class="btn btn-default">Tweet</button>
                     </form>
                 </div>
                 <div id="timeline">
