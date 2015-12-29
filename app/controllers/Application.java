@@ -21,4 +21,8 @@ public class Application extends Controller {
         return ok(index.apply(date, strs));
     }
 
+    public Result login() {
+        return ok(login.apply());
+    }
+
 }
