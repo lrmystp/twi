@@ -29,4 +29,7 @@ public class Application extends Controller {
         return ok(register.apply());
     }
 
+    public Result profile(String username) {
+        return ok(profile.render(username.equals("kuwa") ? username : null));
+    }
 }
