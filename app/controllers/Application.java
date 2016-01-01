@@ -36,4 +36,13 @@ public class Application extends Controller {
     public Result allUsers() {
         return ok(user_list.render());
     }
+
+    public Result following(String username) {
+        return ok(user_list.render());
+    }
+
+    public Result followers(String username) {
+        return ok(user_list.render());
+
+    }
 }

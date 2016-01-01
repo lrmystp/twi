@@ -9,6 +9,8 @@ GET     /register                   controllers.Application.register()
 
 GET     /user/all                   controllers.Application.allUsers()
 GET     /user/:username             controllers.Application.profile(username)
+GET     /user/:username/following   controllers.Application.following(username)
+GET     /user/:username/followers   controllers.Application.followers(username)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
