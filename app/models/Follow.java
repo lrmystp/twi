@@ -3,10 +3,7 @@ package models;
 import com.avaje.ebean.Model;
 import play.data.format.Formats;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,13 +12,14 @@ public class Follow extends Model {
     public Long followId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    User follower;
+    @JoinColumn(name = "follower")
+    public User follower;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    User followee;
+    @JoinColumn(name = "followee")
+    public User followee;
 
+    @Column(nullable = false)
     @Formats.DateTime(pattern = "dd/MM/yyyy")
     public Date createdAt;
 
