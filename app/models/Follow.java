@@ -2,28 +2,27 @@ package models;
 
 import com.avaje.ebean.Model;
 import play.data.format.Formats;
-import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import java.util.Date;
 
 @Entity
 public class Follow extends Model {
     @Id
-    public Long id;
+    public Long followId;
 
-    @Constraints.Required
-    @OneToOne(mappedBy="User")
-    public Long follower;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    User follower;
 
-    @Constraints.Required
-    @OneToOne(mappedBy="User")
-    public Long followee;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    User followee;
 
-    @Constraints.Required
-    @Formats.DateTime(pattern="dd/MM/yyyy")
+    @Formats.DateTime(pattern = "dd/MM/yyyy")
     public Date createdAt;
 
     public static Finder<Long, Follow> find = new Finder<>(Follow.class);

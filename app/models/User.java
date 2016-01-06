@@ -2,26 +2,33 @@ package models;
 
 import com.avaje.ebean.Model;
 import play.data.format.Formats;
-import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User extends Model {
     @Id
-    public Long id;
+    public Long userId;
 
-    @Constraints.Required
     public String username;
 
-    @Constraints.Required
     public String passwordHash;
 
-    @Constraints.Required
     @Formats.DateTime(pattern="dd/MM/yyyy")
     public Date createdAt;
+
+    @OneToMany(mappedBy = "author")
+    public List<Tweet> tweets;
+
+    @OneToMany(mappedBy = "follower")
+    public List<Follow> following;
+
+    @OneToMany(mappedBy = "followee")
+    public List<Follow> followers;
 
     public static Finder<Long, User> find = new Finder<>(User.class);
 }
