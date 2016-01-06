@@ -11,8 +11,7 @@ libraryDependencies ++= Seq(
   javaWs,
   "mysql" % "mysql-connector-java" % "5.1.18",
   evolutions,
-  javaJpa,
-  "org.hibernate" % "hibernate-entitymanager" % "4.3.9.Final"
+  javaJpa
 )
 
 playEbeanModels in Compile := Seq("models.*")
