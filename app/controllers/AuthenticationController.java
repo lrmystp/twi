@@ -2,17 +2,16 @@ package controllers;
 
 import form.LoginForm;
 import models.User;
-import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.*;
 
-import service.UserService;
+import service.AuthenticationService;
 import views.html.*;
 
 import java.util.Optional;
 
 public class AuthenticationController extends Controller {
-    private final UserService userService = new UserService();
+    final private AuthenticationService authService = new AuthenticationService();
 
     public Result loginPage() {
         return loginPage("");
@@ -38,17 +37,10 @@ public class AuthenticationController extends Controller {
 
         final LoginForm userData = loginForm.get();
 
-        final String username = userData.username;
-        final String password = userData.password;
+        final Optional<User> authUserOpt = authService.authenticate(userData.username, userData.password);
 
-        final Optional<User> userOpt = Optional.ofNullable(userService.getUserByUsername(username));
-
-        final boolean authenticated = userOpt
-                    .map(u -> BCrypt.checkpw(password, u.passwordHash))
-                    .orElse(false);
-
-        if (authenticated) {
-            session("userId", String.valueOf(userOpt.get().userId));
+        if (authUserOpt.isPresent()) {
+            session("userId", String.valueOf(authUserOpt.get().userId));
             return redirect("/");
         }
 
