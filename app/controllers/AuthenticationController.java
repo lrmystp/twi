@@ -5,13 +5,13 @@ import models.User;
 import play.data.Form;
 import play.mvc.*;
 
-import service.AuthenticationService;
+import service.UserService;
 import views.html.*;
 
 import java.util.Optional;
 
 public class AuthenticationController extends Controller {
-    final private AuthenticationService authService = new AuthenticationService();
+    final private UserService userService = new UserService();
 
     public Result loginPage() {
         return loginPage("");
@@ -37,7 +37,7 @@ public class AuthenticationController extends Controller {
 
         final LoginForm userData = loginForm.get();
 
-        final Optional<User> authUserOpt = authService.authenticate(userData.username, userData.password);
+        final Optional<User> authUserOpt = userService.authenticate(userData.username, userData.password);
 
         if (authUserOpt.isPresent()) {
             session("userId", String.valueOf(authUserOpt.get().userId));
