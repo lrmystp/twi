@@ -1,3 +1,5 @@
+@(regForm: Form[form.RegisterForm])(message: String)
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,17 +25,24 @@
             </nav>
             <div class="container">
                 <h2>Register</h2>
-                <form id="form">
+                @helper.form(action = routes.RegisterController.registerComplete()) {
+                    @if(message != null && message != "") {
+                        <div class="alert alert-danger">
+                            @message
+                        </div>
+                    }
                     <div>
-                        Username
-                        <input class="form-control" type="text" placeholder="Username" />
+                        @helper.input(regForm("username")) { (_, name, _, _) =>
+                            <input class="form-control" type="text" name="@name" placeholder="username" />
+                        }
                     </div>
                     <div>
-                        Password
-                        <input class="form-control" type="password" placeholder="Password" />
+                        @helper.input(regForm("password")) { (_, name, _, _) =>
+                            <input class="form-control" type="password" name="@name" placeholder="password" />
+                        }
                     </div>
                     <button type="submit" class="btn btn-default">register</button>
-                </form>
+                }
             </div>
         </body>
     </body>
