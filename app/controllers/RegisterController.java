@@ -22,8 +22,6 @@ public class RegisterController extends Controller {
     public Result registerComplete() {
         final Form<RegisterForm> regForm = Form.form(RegisterForm.class).bindFromRequest();
 
-        System.out.println(regForm.get().username);
-
         if (regForm.hasErrors()) {
             return ok(register.render(regForm, "Please fill the form correctly."));
         }
