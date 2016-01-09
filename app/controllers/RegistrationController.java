@@ -11,7 +11,7 @@ import views.html.*;
 
 import java.util.Optional;
 
-public class RegisterController extends Controller {
+public class RegistrationController extends Controller {
 
     public Result registerPage() {
         final Form<RegisterForm> regForm = Form.form(RegisterForm.class);

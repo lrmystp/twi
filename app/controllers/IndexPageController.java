@@ -8,7 +8,7 @@ import views.html.*;
 
 import java.util.Optional;
 
-public class IndexController extends Controller {
+public class IndexPageController extends Controller {
     public Result index() {
         final Optional<Long> userIdOpt = Optional.ofNullable(session("userId")).map(Long::parseLong);
 

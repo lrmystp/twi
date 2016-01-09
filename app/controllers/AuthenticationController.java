@@ -10,7 +10,7 @@ import views.html.*;
 
 import java.util.Optional;
 
-public class LogController extends Controller {
+public class AuthenticationController extends Controller {
     public Result loginPage() {
         return loginPage("");
     }
