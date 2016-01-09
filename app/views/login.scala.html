@@ -1,3 +1,5 @@
+@(loginForm: Form[form.LoginForm])(message: String)
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,34 +9,37 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
     </head>
     <body>
-        <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header pull-left">
-                        <div class="navbar-brand">
-                            <a href="/">(^o^)</a>
-                        </div>
-                        <ul class="nav navbar-nav pull-left">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Mention</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <h2>Login</h2>
-                <form id="form">
-                    <div>
-                        Username
-                        <input class="form-control" type="text" placeholder="Username" />
+                <div class="navbar-header pull-left">
+                    <div class="navbar-brand">
+                        <a href="/">(^o^)</a>
                     </div>
-                    <div>
-                        Password
-                        <input class="form-control" type="password" placeholder="Password" />
-                    </div>
-                    <button type="submit" class="btn btn-default">login</button>
-                </form>
+                    <ul class="nav navbar-nav pull-left">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Mention</a></li>
+                    </ul>
+                </div>
             </div>
-        </body>
+        </nav>
+        <div class="container">
+            <h2>Login</h2>
+            @helper.form(action = routes.AuthenticationController.loginComplete()) {
+                @if(message != null && message != "") {
+                    <div class="alert alert-danger">
+                    @message
+                    </div>
+                }
+                <div>
+                    Username
+                    <input class="form-control" type="text" placeholder="Username" name="username" />
+                </div>
+                <div>
+                    Password
+                    <input class="form-control" type="password" placeholder="Password" name="password" />
+                </div>
+                <button type="submit" class="btn btn-default">login</button>
+            }
+        </div>
     </body>
 </html>

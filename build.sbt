@@ -11,7 +11,8 @@ libraryDependencies ++= Seq(
   javaWs,
   "mysql" % "mysql-connector-java" % "5.1.18",
   evolutions,
-  javaJpa
+  javaJpa,
+  "org.mindrot" % "jbcrypt" % "0.3m"
 )
 
 playEbeanModels in Compile := Seq("models.*")

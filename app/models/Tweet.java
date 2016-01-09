@@ -20,7 +20,7 @@ public class Tweet extends Model {
 
     @Column(nullable = false)
     @Formats.DateTime(pattern = "dd/MM/yyyy")
-    public Date createdAt;
+    public Date createdAt = new Date();
 
     public static Finder<Long, Tweet> find = new Finder<>(Tweet.class);
 }

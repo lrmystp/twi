@@ -3,9 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET     /login                      controllers.Application.login()
-GET     /register                   controllers.Application.register()
+GET     /                           controllers.IndexPageController.index()
+GET     /login                      controllers.AuthenticationController.loginPage()
+GET     /register                   controllers.RegistrationController.registerPage()
+GET     /logout                     controllers.AuthenticationController.logout()
+
+POST    /login                      controllers.AuthenticationController.loginComplete()
+POST    /register                   controllers.RegistrationController.registerComplete()
 
 GET     /user/all                   controllers.Application.allUsers()
 GET     /user/:username             controllers.Application.profile(username)

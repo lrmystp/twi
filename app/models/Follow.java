@@ -21,7 +21,7 @@ public class Follow extends Model {
 
     @Column(nullable = false)
     @Formats.DateTime(pattern = "dd/MM/yyyy")
-    public Date createdAt;
+    public Date createdAt = new Date();
 
     public static Finder<Long, Follow> find = new Finder<>(Follow.class);
 }
