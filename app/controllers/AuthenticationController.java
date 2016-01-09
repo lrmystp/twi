@@ -6,11 +6,14 @@ import org.mindrot.jbcrypt.BCrypt;
 import play.data.Form;
 import play.mvc.*;
 
+import service.UserService;
 import views.html.*;
 
 import java.util.Optional;
 
 public class AuthenticationController extends Controller {
+    private final UserService userService = new UserService();
+
     public Result loginPage() {
         return loginPage("");
     }
@@ -38,7 +41,7 @@ public class AuthenticationController extends Controller {
         final String username = userData.username;
         final String password = userData.password;
 
-        final Optional<User> userOpt = Optional.ofNullable(User.find.where().eq("username", username).findUnique());
+        final Optional<User> userOpt = Optional.ofNullable(userService.getUserByUsername(username));
 
         final boolean authenticated = userOpt
                     .map(u -> BCrypt.checkpw(password, u.passwordHash))

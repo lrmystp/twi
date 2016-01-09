@@ -30,6 +30,4 @@ public class User extends Model {
 
     @OneToMany(mappedBy = "followee")
     public List<Follow> followers;
-
-    public static Finder<Long, User> find = new Finder<>(User.class);
 }
