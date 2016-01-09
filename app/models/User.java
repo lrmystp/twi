@@ -12,7 +12,7 @@ public class User extends Model {
     @Id
     public Long userId;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     public String username;
 
     @Column(nullable = false)
@@ -20,7 +20,7 @@ public class User extends Model {
 
     @Column(nullable = false)
     @Formats.DateTime(pattern="dd/MM/yyyy")
-    public Date createdAt;
+    public Date createdAt = new Date();
 
     @OneToMany(mappedBy = "author")
     public List<Tweet> tweets;
