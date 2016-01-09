@@ -18,7 +18,7 @@ public class IndexController extends Controller {
 
         User user = userIdOpt.map(l -> User.find.byId(l)).get();
 
-        return ok(index.render());
+        return ok(index.render(user));
 
     }
 }
