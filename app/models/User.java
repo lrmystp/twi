@@ -23,6 +23,7 @@ public class User extends Model {
     public Date createdAt = new Date();
 
     @OneToMany(mappedBy = "author")
+    @OrderBy("createdAt DESC")
     public List<Tweet> tweets;
 
     @OneToMany(mappedBy = "follower")
