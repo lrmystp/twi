@@ -11,6 +11,8 @@ GET     /logout                     controllers.AuthenticationController.logout(
 POST    /login                      controllers.AuthenticationController.loginComplete()
 POST    /register                   controllers.RegistrationController.registerComplete()
 
+POST    /tweet/post                 controllers.TweetController.tweet()
+
 GET     /user/all                   controllers.Application.allUsers()
 GET     /user/:username             controllers.Application.profile(username)
 GET     /user/:username/following   controllers.Application.following(username)

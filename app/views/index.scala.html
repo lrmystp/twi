@@ -18,7 +18,6 @@
                         </div>
                         <ul class="nav navbar-nav pull-left">
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">Mention</a></li>
                         </ul>
                     </div>
                     <div id="navbar-header">
@@ -31,34 +30,21 @@
             </nav>
             <div class="container">
                 <div id="tweet-container">
-                    <form id="tweet-form">
-                            <textarea class="form-control" rows="1" placeholder="tweet"></textarea>
-                            <button type="submit" class="btn btn-default">Tweet</button>
-                    </form>
+                    @helper.form(action = routes.TweetController.tweet(), 'id -> "tweet-form") {
+                        <textarea class="form-control" name="content" rows="1" placeholder="tweet" ></textarea>
+                        <button type="submit" class="btn btn-default">Tweet</button>
+                    }
                 </div>
                 <div id="timeline">
-                    <div class="well tweet">
-                        <div class="author">
-                            kuwa
+                    @for(tweet <- user.tweets) {
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="author">@tweet.author.username</div>
+                                <div class="tweet-content">@tweet.content</div>
+                                <div class="date text-right">@tweet.createdAt</div>
+                            </div>
                         </div>
-                        <div class="tweet-content">
-                            dame
-                        </div>
-                        <div class="date text-right">
-                            2015/12/28 23:45:56
-                        </div>
-                    </div>
-                    <div class="well tweet">
-                        <div class="author">
-                            kuwa
-                        </div>
-                        <div class="content">
-                            shinchoku
-                        </div>
-                        <div class="date text-right">
-                            2015/12/28 23:45:40
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </body>
