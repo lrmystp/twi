@@ -38,7 +38,7 @@
                 @for(tweet <- timeline) {
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="author">@tweet.author.username</div>
+                            <div class="author"><a href="/user/@tweet.author.username">@tweet.author.username</a></div>
                             <div class="tweet-content">@tweet.content</div>
                             <div class="date text-right">@tweet.createdAt</div>
                         </div>

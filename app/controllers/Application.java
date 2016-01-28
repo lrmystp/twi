@@ -3,15 +3,15 @@ package controllers;
 import models.User;
 import play.mvc.*;
 
+import service.UserService;
 import views.html.*;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 public class Application extends Controller {
+    private final UserService userService = new UserService();
 
     public Result profile(String username) {
-        return ok(profile.render(username.equals("kuwa") ? username : null));
+        User user = userService.getUserByUsername(username);
+        return ok(profile.render(user));
     }
 
     public Result allUsers() {
