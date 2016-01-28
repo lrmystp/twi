@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, timeline: List[Tweet])
 
 <!DOCTYPE html>
 <html>
@@ -9,44 +9,42 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
     </head>
     <body>
-        <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header pull-left">
-                        <div class="navbar-brand">
-                            <a href="/">(^o^)</a>
-                        </div>
-                        <ul class="nav navbar-nav pull-left">
-                            <li><a href="#">Home</a></li>
-                        </ul>
-                    </div>
-                    <div id="navbar-header">
-                        <ul class="nav navbar-nav pull-right">
-                            <li><a href="#">@user.username</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </nav>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <div id="tweet-container">
-                    @helper.form(action = routes.TweetController.tweet(), 'id -> "tweet-form") {
-                        <textarea class="form-control" name="content" rows="1" placeholder="tweet" ></textarea>
-                        <button type="submit" class="btn btn-default">Tweet</button>
-                    }
+                <div class="navbar-header pull-left">
+                    <div class="navbar-brand">
+                        <a href="/">(^o^)</a>
+                    </div>
+                    <ul class="nav navbar-nav pull-left">
+                        <li><a href="#">Home</a></li>
+                    </ul>
                 </div>
-                <div id="timeline">
-                    @for(tweet <- user.tweets) {
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="author">@tweet.author.username</div>
-                                <div class="tweet-content">@tweet.content</div>
-                                <div class="date text-right">@tweet.createdAt</div>
-                            </div>
-                        </div>
-                    }
+                <div id="navbar-header">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">@user.username</a></li>
+                    </ul>
                 </div>
+
             </div>
-        </body>
+        </nav>
+        <div class="container">
+            <div id="tweet-container">
+                @helper.form(action = routes.TweetController.tweet(), 'id -> "tweet-form") {
+                    <textarea class="form-control" name="content" rows="1" placeholder="tweet" ></textarea>
+                    <button type="submit" class="btn btn-default">Tweet</button>
+                }
+            </div>
+            <div id="timeline">
+                @for(tweet <- timeline) {
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="author">@tweet.author.username</div>
+                            <div class="tweet-content">@tweet.content</div>
+                            <div class="date text-right">@tweet.createdAt</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </body>
 </html>
