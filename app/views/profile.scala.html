@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, isMe: Boolean, following: Boolean, followed: Boolean)
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,6 +36,17 @@
                 <h1>
                     @user.username
                 </h1>
+                @if(!isMe) {
+                    @if(following) {
+                        @helper.form(action = routes.UserController.unfollow(user.username)) {
+                            <button type="submit" class="btn btn-danger">Unfollow</button>
+                        }
+                    } else {
+                        @helper.form(action = routes.UserController.follow(user.username)) {
+                            <button type="submit" class="btn btn-primary">Follow</button>
+                        }
+                    }
+                }
                 <div>
                     <h3>Tweet</h3>
                     @user.tweets.size()
