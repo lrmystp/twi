@@ -1,4 +1,4 @@
-@(username: String)
+@(user: User, isMe: Boolean, following: Boolean, followed: Boolean)
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,48 +8,58 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/index.css")">
     </head>
     <body>
-        <body>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header pull-left">
-                        <div class="navbar-brand">
-                            <a href="/">(^o^)</a>
-                        </div>
-                        <ul class="nav navbar-nav pull-left">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Mention</a></li>
-                        </ul>
-                    </div>
-                    <div id="navbar-header">
-                        <ul class="nav navbar-nav pull-right">
-                            <li><a href="#">kuwa</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </nav>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                @if("kuwa".equals(username)) {
-                    <h1>
-                        kuwa
-                    </h1>
-                    <div>
-                        <h3>Tweets</h3>
-                        2
+                <div class="navbar-header pull-left">
+                    <div class="navbar-brand">
+                        <a href="/">(^o^)</a>
                     </div>
-                    <div>
-                        <h3>Followings</h3>
-                        0
-                    </div>
-                        <h3>Followers</h3>
-                        0
-                    </div>
-                }else{
-                    <h2>
-                        This user does not exist
-                    </h2>
-                }
+                    <ul class="nav navbar-nav pull-left">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Mention</a></li>
+                    </ul>
+                </div>
+                <div id="navbar-header">
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="#">kuwa</a></li>
+                    </ul>
+                </div>
+
             </div>
-        </body>
+        </nav>
+        <div class="container">
+            @if(user == null) {
+                <h2>
+                    This user does not exist
+                </h2>
+            }else{
+                <h1>
+                    @user.username
+                </h1>
+                @if(!isMe) {
+                    @if(following) {
+                        @helper.form(action = routes.UserController.unfollow(user.username)) {
+                            <button type="submit" class="btn btn-danger">Unfollow</button>
+                        }
+                    } else {
+                        @helper.form(action = routes.UserController.follow(user.username)) {
+                            <button type="submit" class="btn btn-primary">Follow</button>
+                        }
+                    }
+                }
+                <div>
+                    <h3>Tweet</h3>
+                    @user.tweets.size()
+                </div>
+                <div>
+                    <h3>Followings</h3>
+                    @user.following.size()
+                </div>
+                <div>
+                    <h3>Followers</h3>
+                    @user.followers.size()
+                </div>
+            }
+        </div>
     </body>
 </html>
